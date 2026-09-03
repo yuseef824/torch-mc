@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TORCH MC - Minecraft Community Hub</title>
+    <title>TORCH MC - Home</title>
     <style>
         * {
             box-sizing: border-box;
@@ -24,7 +24,7 @@
         }
 
         .container {
-            max-width: 600px;
+            max-width: 550px;
             width: 100%;
             background: rgba(26, 29, 46, 0.85);
             backdrop-filter: blur(12px);
@@ -36,8 +36,8 @@
         }
 
         .server-logo {
-            width: 100px;
-            height: 100px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
             border: 3px solid #22c55e;
             object-fit: cover;
@@ -46,33 +46,33 @@
         }
 
         h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
+            font-size: 34px;
+            margin-bottom: 12px;
             background: linear-gradient(45deg, #22c55e, #3b82f6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: 800;
         }
 
-        .welcome-desc {
+        .description {
             color: #9ca3af;
             font-size: 15px;
             line-height: 1.6;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
-        .nav-buttons {
+        .nav-section {
             display: flex;
             justify-content: center;
             gap: 12px;
             flex-wrap: wrap;
-            margin-bottom: 25px;
+            margin-bottom: 35px;
         }
 
         .btn {
             background: #25283d;
             color: #ffffff;
-            padding: 12px 22px;
+            padding: 12px 25px;
             text-decoration: none;
             border-radius: 10px;
             font-weight: bold;
@@ -88,37 +88,21 @@
             box-shadow: 0 5px 15px rgba(34, 197, 94, 0.3);
         }
 
-        .server-card {
-            background: rgba(37, 40, 61, 0.6);
-            padding: 20px;
-            border-radius: 12px;
-            text-align: right;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .server-card h3 {
-            color: #22c55e;
-            margin-bottom: 8px;
-            font-size: 18px;
-        }
-
-        .server-card p {
-            color: #d1d5db;
-            font-size: 14px;
-            margin-bottom: 6px;
+        .telegram-section {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 20px;
         }
 
         .telegram-btn {
-            display: block;
-            width: 100%;
+            display: inline-block;
             background: linear-gradient(45deg, #22c55e, #16a34a);
             color: #ffffff;
             text-align: center;
-            padding: 12px;
+            padding: 12px 30px;
             border-radius: 10px;
             text-decoration: none;
             font-weight: bold;
-            margin-top: 15px;
+            font-size: 15px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
         }
@@ -132,26 +116,26 @@
 <body>
 
     <div class="container">
-        <!-- أيقونة السيرفر (تأكد إن مسارها صح عندك) -->
+        <!-- أيقونة السيرفر -->
         <img src="img-mods/s.png" alt="Torch MC Logo" class="server-logo">
         
+        <!-- اسم السيرفر -->
         <h1>TORCH MC</h1>
-        <p class="welcome-desc">
-            أهلاً بك في Torch Store - المنصة العربية المتكاملة التي تقدم جميع ما يخص لعبة Minecraft من مودات، سيرفرات، وملفات إعدادات احترافية لرفع كفاءة تجربتك.
+        
+        <!-- الوصف -->
+        <p class="description">
+            الموقع الرسمي والمنصة المتكاملة لكل ما يخص Minecraft. استكشف أقسام السيرفرات، المودات، والإعدادات بكل سهولة.
         </p>
         
-        <!-- أزرار التنقل -->
-        <div class="nav-buttons">
+        <!-- قسم الأزرار الخاصة بالأقسام -->
+        <div class="nav-section">
             <a href="servrs.html" class="btn">Servers</a>
             <a href="mods.html" class="btn">Mods</a>
             <a href="#" class="btn">Configs</a>
         </div>
 
-        <!-- بطاقة معلومات السيرفر أو التواصل -->
-        <div class="server-card">
-            <h3>انضم إلى مجتمعنا</h3>
-            <p><strong>الحالة:</strong> متصل وجاهز للاستكشاف</p>
-            <p><strong>الدعم الفني:</strong> متاح عبر قناتنا على التليجرام</p>
+        <!-- قسم قناة التليجرام بالأسفل -->
+        <div class="telegram-section">
             <a href="https://t.me/torch_store" target="_blank" class="telegram-btn">Join Telegram</a>
         </div>
     </div>
