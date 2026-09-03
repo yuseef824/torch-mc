@@ -1,99 +1,208 @@
 <!DOCTYPE html>
-<html lang="ar" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TORCH MC - Mods</title>
-  <style>
-    body {
-      background-color: #313442;
-      color: #ffffff;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-      text-align: center;
-    }
-    .container {
-      max-width: 800px;
-      margin: 40px auto;
-      background: #1a1d2d;
-      padding: 40px;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    }
-    .btn {
-      display: inline-block;
-      background: #22c55e;
-      color: #000;
-      padding: 12px 25px;
-      margin: 10px;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    .btn:hover {
-      background: #16a34a;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TORCH MC - Mods</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0f1016;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at center, #1b223d 0%, #0f1016 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 650px;
+            width: 100%;
+            background: rgba(26, 29, 46, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-align: center;
+            background: linear-gradient(45deg, #22c55e, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        /* صندوق البحث */
+        #searchInput {
+            width: 100%;
+            padding: 12px 20px;
+            margin-bottom: 25px;
+            background: rgba(37, 40, 61, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        #searchInput:focus {
+            border-color: #22c55e;
+        }
+
+        /* كارت المود */
+        .mod-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(37, 40, 61, 0.6);
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .mod-card:hover {
+            transform: translateY(-3px);
+            border-color: #22c55e;
+            box-shadow: 0 5px 15px rgba(34, 197, 94, 0.2);
+        }
+
+        .mod-card img {
+            width: 65px;
+            height: 65px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .mod-info {
+            text-align: right;
+            flex-grow: 1;
+        }
+
+        .mod-info h3 {
+            color: #ffffff;
+            margin: 0 0 5px 0;
+            font-size: 18px;
+        }
+
+        .mod-info p {
+            color: #9ca3af;
+            margin: 0;
+            font-size: 13px;
+        }
+
+        .download-btn {
+            background: #22c55e;
+            color: #0f1016;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 13px;
+            transition: opacity 0.3s;
+        }
+
+        .mod-card:hover .download-btn {
+            opacity: 0.9;
+        }
+
+        /* زر العودة */
+        .back-btn {
+            display: block;
+            width: fit-content;
+            margin: 25px auto 0 auto;
+            background: #25283d;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #22c55e;
+            color: #0f1016;
+        }
+    </style>
 </head>
 <body>
 
-  
-   <div class="container">
-    <h1 style="font-size: 50px; color: #075800; margin-top: 10px;"> Mods ALL </h1>
-    
-<input type="text" id="searchInput" placeholder="Search mods..." onkeyup="searchMods()" style="width: 100%; padding: 12px 20px; margin-bottom: 25px; background: #25283d; border: 2px solid #3b82f6; border-radius: 8px; color: #fff; font-size: 16px; outline: none; box-sizing: border-box;">
-    
-    
-    <a href="https://modrinth.com/mod/sodium/versions" target="_blank" style="display: flex; align-items: center; gap: 20px; background: #25283d; padding: 20px; border-radius: 10px; margin: 30px 0; text-decoration: none; transition: 0.3s; border: 2px solid transparent;" onmouseover="this.style.borderColor='#22c55e'" onmouseout="this.style.borderColor='transparent'">
-      
-      
-      <img src="img-mods/sodium.png" alt="Sodium" style="width: 70px; height: 70px; border-radius: 8px; object-fit: cover;">
-      
-      
-      <div style="text-align: left; flex-grow: 1;">
-        <h3 style="color: hwb(0 56% 44%); margin: 0 0 5px 0; font-size: 20px;"> Sodium </h3>
-        <p style="color: #9ca3af; margin: 0; font-size: 14px;"> Version: 1.14.2 = 2.26 </p>
-      </div>
+    <div class="container">
+        <h1> Mods ALL </h1>
+        
+        <!-- حقل البحث -->
+        <input type="text" id="searchInput" placeholder="ابحث عن المودات..." onkeyup="searchMods()">
+        
+        <!-- قائمة المودات -->
+        <div id="modsList">
+            <!-- Sodium -->
+            <a href="https://modrinth.com/mod/sodium/versions" target="_blank" class="mod-card">
+                <img src="img-mods/sodium.png" alt="Sodium">
+                <div class="mod-info">
+                    <h3>Sodium</h3>
+                    <p>Version: 1.14.2 - 2.26</p>
+                </div>
+                <span class="download-btn">Download</span>
+            </a>
 
-      
-      <span style="background: #22c55e; color: #000; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;"> Download </span>
+            <!-- Fabric API -->
+            <a href="https://modrinth.com/mod/fabric-api/versions" target="_blank" class="mod-card">
+                <img src="img-mods/Fabric API.png" alt="Fabric API">
+                <div class="mod-info">
+                    <h3>Fabric API</h3>
+                    <p>Version: 1.14 - 2.26</p>
+                </div>
+                <span class="download-btn">Download</span>
+            </a>
 
-    </a>
+            <!-- Iris Shaders -->
+            <a href="https://modrinth.com/mod/iris/versions" target="_blank" class="mod-card">
+                <img src="img-mods/irs.png" alt="Iris Shaders">
+                <div class="mod-info">
+                    <h3>Iris Shaders</h3>
+                    <p>Version: 1.16.5 - 2.26</p>
+                </div>
+                <span class="download-btn">Download</span>
+            </a>
+        </div>
 
-    <a href="https://modrinth.com/mod/fabric-api/versions" target="_blank" style="display: flex; align-items: center; gap: 20px; background: #25283d; padding: 20px; border-radius: 10px; margin: 30px 0; text-decoration: none; transition: 0.3s; border: 2px solid transparent;" onmouseover="this.style.borderColor='#22c55e'" onmouseout="this.style.borderColor='transparent'">
-      
-      
-      <img src="img-mods/FabricAPI.png" alt="Sodium" style="width: 70px; height: 70px; border-radius: 8px; object-fit: cover;">
-      
-      
-      <div style="text-align: left; flex-grow: 1;">
-        <h3 style="color: hwb(0 56% 44%); margin: 0 0 5px 0; font-size: 20px;"> Fabric API </h3>
-    <p style="color: #9ca3af; margin: 0; font-size: 14px;"> Version: 1.14 = 2.26 </p>
-      </div>
+        <!-- زر العودة -->
+        <a href="index.html" class="back-btn">Back to Home</a>
+    </div>
 
-      
-      <span style="background: #22c55e; color: #000; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;"> Download </span>
+    <script>
+        // سكربت البحث البسيط
+        function searchMods() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.getElementsByClassName('mod-card');
 
-    </a>
+            for (let i = 0; i < cards.length; i++) {
+                let title = cards[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+                if (title.includes(input)) {
+                    cards[i].style.display = "flex";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+    </script>
 
-    <a href="https://modrinth.com/mod/iris/versions" target="_blank" style="display: flex; align-items: center; gap: 20px; background: #25283d; padding: 20px; border-radius: 10px; margin: 30px 0; text-decoration: none; transition: 0.3s; border: 2px solid transparent;" onmouseover="this.style.borderColor='#22c55e'" onmouseout="this.style.borderColor='transparent'">
-      
-      
-      <img src="img-mods/irs.png" alt="Sodium" style="width: 70px; height: 70px; border-radius: 8px; object-fit: cover;">
-      
-      
-      <div style="text-align: left; flex-grow: 1;">
-        <h3 style="color: hwb(0 56% 44%); margin: 0 0 5px 0; font-size: 20px;"> Iris Shaders </h3>
-    <p style="color: #9ca3af; margin: 0; font-size: 14px;"> Version: 1.16.5 = 2.26 </p>
-      </div>
-
-      
-      <span style="background: #22c55e; color: #000; padding: 8px 15px; border-radius: 6px; font-weight: bold; font-size: 14px;"> Download </span>
-
-    </a>
-
-    
-    <a href="index.html" class="btn" style="display: block; width: fit-content; margin: 20px auto; font-size: 16px;"> Back to Home </a>
-  </div>
+</body>
+</html>
