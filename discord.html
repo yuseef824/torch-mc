@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TORCH MC - Discord Community</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0f1016;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at center, #1b223d 0%, #0f1016 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 650px;
+            width: 100%;
+            background: rgba(26, 29, 46, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
+        }
+
+        /* صورة البنر المستطيلة للاستعراض الاحترافي */
+        .discord-banner {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 2px solid rgba(88, 101, 242, 0.3);
+        }
+
+        .content-body {
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* أيقونة السيرفر الدائرية المتداخلة مع البنر */
+        .server-avatar {
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            border: 4px solid #1a1d2e;
+            object-fit: cover;
+            margin-top: -65px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            background: #0f1016;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+            color: #ffffff;
+            font-weight: 800;
+        }
+
+        .discord-tag {
+            display: inline-block;
+            background: rgba(88, 101, 242, 0.15);
+            color: #7289da;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border: 1px solid rgba(88, 101, 242, 0.3);
+        }
+
+        .description {
+            color: #9ca3af;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        /* بطاقة احصائيات سريعة لسيرفر الديسكورد */
+        .stats-box {
+            display: flex;
+            justify-content: space-around;
+            background: rgba(37, 40, 61, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-item h4 {
+            color: #22c55e;
+            font-size: 18px;
+            margin-bottom: 3px;
+        }
+
+        .stat-item span {
+            color: #9ca3af;
+            font-size: 12px;
+        }
+
+        /* زر الانضمام للديسكورد بلون الديسكورد المميز */
+        .discord-btn {
+            display: block;
+            width: 100%;
+            background: #5865F2;
+            color: #ffffff;
+            padding: 14px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
+            margin-bottom: 15px;
+        }
+
+        .discord-btn:hover {
+            background: #4752c4;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(88, 101, 242, 0.6);
+        }
+
+        /* زر العودة */
+        .back-btn {
+            display: inline-block;
+            background: #25283d;
+            color: #ffffff;
+            padding: 10px 22px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 13px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #22c55e;
+            color: #0f1016;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- صورة البنر المستطيلة بالأعلى -->
+        <img src="#" alt="Discord Banner" class="discord-banner">
+        
+        <div class="content-body">
+            <!-- صورة السيرفر الدائرية المتداخلة -->
+            <img src="img-servers/s.png" alt="Server Avatar" class="server-avatar">
+            
+            <h1>TORCH MC Community</h1>
+            <div class="discord-tag">Official Discord Server</div>
+            
+            <p class="description">
+                انضم إلى أكبر مجتمع عربي للماين كرافت. تواصل معنا، احصل على المساعدات، واكتشف أحدث السيرفرات والإعدادات.
+            </p>
+
+            <!-- إحصائيات وهمية أو حقيقية لإعطاء طابع احترافي -->
+            <div class="stats-box">
+                <div class="stat-item">
+                    <h4>1.2K+</h4>
+                    <span>عضو متفاعل</span>
+                </div>
+                <div class="stat-item">
+                    <h4>Online</h4>
+                    <span>الحالة الآن</span>
+                </div>
+                <div class="stat-item">
+                    <h4>24/7</h4>
+                    <span>دعم فني</span>
+                </div>
+            </div>
+
+            <!-- زر الانضمام -->
+            <a href="https://discord.gg/qDRjs3Nzx" target="_blank" class="discord-btn">الانضمام إلى سيرفر الديسكورد ➔</a>
+
+            <!-- زر العودة للرئيسية -->
+            <a href="index.html" class="back-btn">Back to Home</a>
+        </div>
+    </div>
+
+</body>
+</html>
