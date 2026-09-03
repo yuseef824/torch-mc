@@ -1,105 +1,223 @@
 <!DOCTYPE html>
-<html lang="ar" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TORCH MC - Servers</title>
-  <style>
-    body {
-      background-color: #1a1d2d; /* خلفية سادة فخمة ومتناسقة مع الموقع */
-      color: #ffffff;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-      text-align: center;
-    }
-    .container {
-      max-width: 800px;
-      margin: 40px auto;
-      background: #11131c;
-      padding: 40px;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    }
-    .server-card {
-      background: #25283d;
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      text-align: left;
-    }
-    .server-card img {
-      width: 80px;
-      height: 80px;
-      border-radius: 8px;
-      object-fit: cover;
-    }
-    .server-info {
-      flex-grow: 1;
-    }
-    .btn {
-      display: inline-block;
-      background: #3b82f6;
-      color: #ffffff;
-      padding: 8px 18px;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      font-size: 14px;
-      transition: 0.3s;
-    }
-    .btn:hover {
-      background: #2563eb;
-    }
-    .back-btn {
-      display: block;
-      width: fit-content;
-      margin: 25px auto 0 auto;
-      background: #22c55e;
-      color: #000000;
-      padding: 12px 25px;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-    }
-    .back-btn:hover {
-      background: #16a34a;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TORCH MC - Servers</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0f1016;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at center, #1b223d 0%, #0f1016 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 650px;
+            width: 100%;
+            background: rgba(26, 29, 46, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 8px;
+            text-align: center;
+            background: linear-gradient(45deg, #3b82f6, #22c55e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #9ca3af;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        /* كارت السيرفر */
+        .server-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(37, 40, 61, 0.6);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            text-align: right;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .server-card:hover {
+            border-color: #3b82f6;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
+        }
+
+        .server-card img {
+            width: 75px;
+            height: 75px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .server-info {
+            flex-grow: 1;
+        }
+
+        .server-info h3 {
+            color: #22c55e;
+            margin: 0 0 5px 0;
+            font-size: 20px;
+        }
+
+        .server-type {
+            color: #9ca3af;
+            margin: 0 0 8px 0;
+            font-size: 13px;
+        }
+
+        .server-ip {
+            color: #ffffff;
+            margin: 0 0 12px 0;
+            font-size: 13px;
+            font-family: monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 4px 8px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        /* زر الديسكورد */
+        .discord-btn {
+            display: inline-block;
+            background: #3b82f6;
+            color: #ffffff;
+            padding: 8px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+        }
+
+        .discord-btn:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        /* قسم الترويج والتسويق بالسفل */
+        .promo-section {
+            background: rgba(37, 40, 61, 0.4);
+            border: 1px dashed rgba(59, 130, 246, 0.4);
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+
+        .promo-section p {
+            color: #d1d5db;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .promo-link {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .promo-link:hover {
+            color: #60a5fa;
+            text-decoration: underline;
+        }
+
+        /* زر العودة */
+        .back-btn {
+            display: block;
+            width: fit-content;
+            margin: 0 auto;
+            background: #25283d;
+            color: #ffffff;
+            padding: 10px 22px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #22c55e;
+            color: #0f1016;
+        }
+    </style>
 </head>
 <body>
 
-  <div class="container">
-    <h1 style="font-size: 36px; color: #ffffff; margin-top: 0;"> Servers List </h1>
-    <p style="color: #9ca3af; margin-bottom: 30px;"> servres </p>
-    
-    
-    <div class="server-card">
-      <img src="img-servers/s.png" alt="Server Logo">
-      <div class="server-info">
-        <h3 style="color: #22c55e; margin: 0 0 5px 0;"> STAR MC</h3>
-         <p style="color: #9ca3af; margin: 0 0 5px 0; font-size: 14px;">سيرفر  بوكس </p>
-        <p style="color: #ffffff; margin: 0 0 10px 0; font-size: 13px; font-family: monospace;">IP: 134.255.255.141 | Port: 8027 </p>
-        <a href="https://discord.gg/qDRjs3Nzx" target="_blank" class="btn">Discord</a>
-      </div>
-    </div>
+    <div class="container">
+        <h1>Servers List</h1>
+        <p class="subtitle">استكشف أقوى سيرفرات الماين كرافت وانضم إلى مجتمعاتها</p>
+        
+        <!-- سيرفر 1 -->
+        <div class="server-card">
+            <img src="img-servers/s.png" alt="Server Logo">
+            <div class="server-info">
+                <h3>STAR MC</h3>
+                <p class="server-type">سيرفر بوكس</p>
+                <div class="server-ip">IP: 134.255.255.141 | Port: 8027</div>
+                <div>
+                    <a href="https://discord.gg/qDRjs3Nzx" target="_blank" class="discord-btn">Discord</a>
+                </div>
+            </div>
+        </div>
 
-    <div class="server-card">
-      <img src="s.png" alt="Server Logo">
-      <div class="server-info">
-        <h3 style="color: #22c55e; margin: 0 0 5px 0;"> STAR </h3>
-         <p style="color: #9ca3af; margin: 0 0 5px 0; font-size: 14px;">سيرفر  بوكس </p>
-        <p style="color: #ffffff; margin: 0 0 10px 0; font-size: 13px; font-family: monospace;">IP: 134.255.255.141 | Port: 8027 </p>
-        <a href="https://discord.gg/qDRjs3Nzx" target="_blank" class="btn">Discord</a>
-      </div>
-    </div>
+        <!-- سيرفر 2 -->
+        <div class="server-card">
+            <img src="img-" alt="Server Logo">
+            <div class="server-info">
+                <h3>STAR</h3>
+                <p class="server-type">سيرفر بوكس</p>
+                <div class="server-ip">IP: 134.255.255.141 | Port: 8027</div>
+                <div>
+                    <a href="https://discord.gg/qDRjs3Nzx" target="_blank" class="discord-btn">Discord</a>
+                </div>
+            </div>
+        </div>
 
-    
-    <a href="index.html" class="back-btn">Back to Home</a>
-  </div>
+        <!-- قسم الترويج للسيرفرات -->
+        <div class="promo-section">
+            <p>تريد تروج لسيرفرك الخاص وبأسعار تنافسية ومناسبة جداً؟</p>
+            <a href="https://t.me/torch_store" target="_blank" class="promo-link">تواصل معنا للترويج عبر تليجرام ➔</a>
+        </div>
+
+        <!-- زر العودة -->
+        <a href="index.html" class="back-btn">Back to Home</a>
+    </div>
 
 </body>
 </html>
