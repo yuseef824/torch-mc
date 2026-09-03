@@ -1,16 +1,22 @@
-<style>
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TORCH MC - Servers</title>
+  <style>
     body {
-  background-color: #1e1e24;
-  color: #ffffff;
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 20px;
-  text-align: center;
-}
+      background-color: #1a1d2d; /* خلفية سادة فخمة ومتناسقة مع الموقع */
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
     .container {
       max-width: 800px;
       margin: 40px auto;
-      background: #1a1d2d;
+      background: #11131c;
       padding: 40px;
       border-radius: 15px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
@@ -36,9 +42,9 @@
     }
     .btn {
       display: inline-block;
-      background: #22c55e;
-      color: #000;
-      padding: 8px 15px;
+      background: #3b82f6;
+      color: #ffffff;
+      padding: 8px 18px;
       text-decoration: none;
       border-radius: 8px;
       font-weight: bold;
@@ -46,17 +52,46 @@
       transition: 0.3s;
     }
     .btn:hover {
-      background: #16a34a;
+      background: #2563eb;
     }
     .back-btn {
       display: block;
       width: fit-content;
-      margin: 20px auto;
+      margin: 25px auto 0 auto;
       background: #22c55e;
-      color: #000;
+      color: #000000;
       padding: 12px 25px;
       text-decoration: none;
       border-radius: 8px;
       font-weight: bold;
     }
-</style>
+    .back-btn:hover {
+      background: #16a34a;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1 style="font-size: 36px; color: #ffffff; margin-top: 0;"> Servers List </h1>
+    <p style="color: #9ca3af; margin-bottom: 30px;"> servres </p>
+    
+    
+    <div class="server-card">
+      <img src="رابط_صورة_السيرفر.png" alt="Server Logo">
+      <div class="server-info">
+        <h3 style="color: #22c55e; margin: 0 0 5px 0;">TORCH MC</h3>
+        <p style="color: #9ca3af; margin: 0 0 5px 0; font-size: 14px;">الوصف: سيرفر عربي متكامل للبقاء والألعاب الممتعة.</p>
+        <p style="color: #ffffff; margin: 0 0 10px 0; font-size: 13px; font-family: monospace;">IP: play.torchmc.com | Port: 19132</p>
+        <a href="https://discord.gg/yourlink" target="_blank" class="btn">Discord</a>
+      </div>
+    </div>
+
+    <!-- إذا تريد تضيف سيرفر ثاني، تقدر تنسخ الـ server-card الفوق وتلصقه جواه -->
+
+    <!-- زر الرجوع للرئيسية -->
+    <a href="index.html" class="back-btn">Back to Home</a>
+  </div>
+
+</body>
+</html>
