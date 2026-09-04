@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Profile</title>
+    <!-- أيقونة المتصفح -->
+    <link rel="icon" type="image/png" href="img-servers/s.png">
+    <!-- مكتبة الأيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0f1016;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at center, #1b223d 0%, #0f1016 100%);
+            padding: 20px;
+        }
+
+        .profile-card {
+            max-width: 480px;
+            width: 100%;
+            background: rgba(26, 29, 46, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            padding: 40px 25px;
+            text-align: center;
+        }
+
+        /* اسم المطور */
+        h1 {
+            font-size: 28px;
+            color: #ffffff;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        /* معلومات العمر والخبرات */
+        .dev-meta {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .meta-badge {
+            background: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            font-weight: 600;
+        }
+
+        /* الوصف في المنتصف */
+        .description {
+            color: #9ca3af;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            padding: 0 10px;
+        }
+
+        /* قسم وسائل التواصل الاجتماعي */
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 13px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ألوان الأزرار الخاصة بالتواصل */
+        .discord-btn {
+            background: #5865F2;
+        }
+        .discord-btn:hover {
+            background: #4752c4;
+            transform: translateY(-2px);
+        }
+
+        .tiktok-btn {
+            background: #000000;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .tiktok-btn:hover {
+            background: #111111;
+            transform: translateY(-2px);
+        }
+
+        .telegram-btn {
+            background: #24A1DE;
+        }
+        .telegram-btn:hover {
+            background: #1f8abf;
+            transform: translateY(-2px);
+        }
+
+        /* زر العودة للرئيسية */
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.2s;
+        }
+        .back-link:hover {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-card">
+        <!-- اسم المطور -->
+        <h1>AUNER</h1>(Developer)</h1>
+        
+        <!-- العمر والخبرات -->
+        <div class="dev-meta">
+            <span class="meta-badge">العمر: 17 سنة</span>
+            <span class="meta-badge">الخبرة: تطوير سيرفرات ماين كرافت</span>
+        </div>
+        
+        <!-- الوصف في المنتصف -->
+        <p class="description">
+            مطور ومبرمج سيرفرات ماين كرافت، مختص بإعداد البلاغنز، وتصميم واجهات الويب وتنسيق السيرفرات باحترافية عالية ودعم مستمر.
+        </p>
+
+        <!-- روابط التواصل الاجتماعي -->
+        <div class="social-links">
+            <!-- ديسكورد -->
+            <a href="https://discord.gg/@alminei_15" target="_blank" class="social-btn discord-btn">
+                <i class="fa-brands fa-discord"></i> Discord Server
+            </a>
+            
+            <!-- تيك توك -->
+            <a href="https://tiktok.com/@drbax0" target="_blank" class="social-btn tiktok-btn">
+                <i class="fa-brands fa-tiktok"></i> TikTok
+            </a>
+            
+            <!-- تيليجرام -->
+            <a href="https://t.me/@AUNER_0" target="_blank" class="social-btn telegram-btn">
+                <i class="fa-brands fa-telegram"></i> Telegram
+            </a>
+        </div>
+
+        <!-- زر العودة -->
+        <a href="index.html" class="back-link">← العودة إلى الصفحة الرئيسية</a>
+    </div>
+
+</body>
+</html>
