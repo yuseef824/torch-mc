@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,17 +44,6 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-        }
-
-        /* خط إضاءة خفيف أعلى البطاقة */
-        .container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            left: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #22c55e, #3b82f6);
         }
 
         .logo-wrapper {
@@ -207,7 +196,7 @@
             }
 
             .nav-grid {
-                grid-template-columns: 1fr; /* جعل الأزرار عمودية بالموبايل لسهولة الضغط */
+                grid-template-columns: 1fr;
             }
 
             .discord-full-btn {
@@ -231,7 +220,7 @@
             الموقع الرسمي والمنصة المتكاملة لكل ما يخص Minecraft. استكشف أقسام السيرفرات، المودات، والإعدادات بكل سهولة.
         </p>
         
-        
+        <!-- شبكة الأزرار الحديثة -->
         <div class="nav-grid">
             <a href="servrs.html" class="btn">
                 <i class="fa-solid fa-server"></i> Servers
