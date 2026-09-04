@@ -43,7 +43,13 @@
             text-align: center;
         }
 
-        /* صورة البنر المستطيلة بالأعلى */
+        /* البنر: إذا ماكو صورة أو كان الـ src فارغ/غير موجود، يختفي تلقائياً */
+        .discord-banner:not([src]), 
+        .discord-banner[src=""], 
+        .discord-banner[src="#"] {
+            display: none;
+        }
+
         .discord-banner {
             width: 100%;
             height: 160px;
@@ -53,18 +59,26 @@
         }
 
         .content-body {
-            padding: 0 30px 30px 30px;
+            padding: 30px;
             position: relative;
         }
 
-        /* أيقونة السيرفر الدائرية المتداخلة مع البنر */
+        /* إذا البنر مخفي، نخلي مسافة الأيقونة الدائرية طبيعية وفوق */
+        .discord-banner:not([src]) ~ .content-body .server-avatar,
+        .discord-banner[src=""] ~ .content-body .server-avatar,
+        .discord-banner[src="#"] ~ .content-body .server-avatar {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* أيقونة السيرفر الدائرية المتداخلة (في حال وجود بنر) */
         .server-avatar {
             width: 85px;
             height: 85px;
             border-radius: 50%;
             border: 4px solid #1a1d2e;
             object-fit: cover;
-            margin-top: -45px;
+            margin-top: -65px;
             margin-bottom: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             background: #0f1016;
@@ -94,11 +108,10 @@
         .description {
             color: #9ca3af;
             font-size: 14px;
-            line-align: 1.6;
+            line-height: 1.6;
             margin-bottom: 25px;
         }
 
-        /* بطاقة احصائيات سريعة لسيرفر الديسكورد */
         .stats-box {
             display: flex;
             justify-content: space-around;
@@ -120,7 +133,6 @@
             font-size: 12px;
         }
 
-        /* زر الانضمام للديسكورد */
         .discord-btn {
             display: block;
             width: 100%;
@@ -141,7 +153,6 @@
             box-shadow: 0 6px 20px rgba(88, 101, 242, 0.6);
         }
 
-        /* زر العودة */
         .back-btn {
             display: inline-block;
             background: rgba(37, 40, 61, 0.8);
@@ -160,13 +171,9 @@
             color: #0f1016;
         }
 
-        /* التجاوب مع الهواتف المحمولة */
         @media (max-width: 480px) {
             body {
                 padding: 10px;
-            }
-            .content-body {
-                padding: 0 20px 20px 20px;
             }
             h1 {
                 font-size: 24px;
@@ -181,11 +188,9 @@
 
     <div class="page-wrapper">
         <div class="container">
-            <!-- صورة البنر المستطيلة بالأعلى -->
             <img src="img-bnr/star.png" alt="Discord Banner" class="discord-banner">
             
             <div class="content-body">
-                <!-- صورة السيرفر الدائرية المتداخلة -->
                 <img src="img-servers/s.png" alt="Server Avatar" class="server-avatar">
                 
                 <h1>STAR MC Community</h1>
@@ -210,12 +215,10 @@
                     </div>
                 </div>
 
-                <!-- زر الانضمام -->
                 <a href="https://discord.gg/qDRjs3Nzx" target="_blank" class="discord-btn">الانضمام إلى سيرفر الديسكورد ➔</a>
             </div>
         </div>
 
-        <!-- زر العودة للرئيسية -->
         <a href="index.html" class="back-btn">Back to Home</a>
     </div>
 
