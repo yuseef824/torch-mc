@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TORCH MC - Launchers</title>
+    <!-- أيقونة الموقع المصغرة -->
     <link rel="icon" type="image/png" href="logo.png">
-    <link rel="stylesheet" href="">
+    <!-- مكتبة الأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         * {
@@ -27,7 +29,6 @@
                 radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
                 #0b0c10;
             padding: 20px;
-            /* تأثير ظهور سلس للصفحة بدون أي تقطيع */
             opacity: 0;
             animation: fadeIn 0.4s ease-in-out forwards;
         }
@@ -99,7 +100,6 @@
             padding-right: 5px;
         }
 
-        /* تخصيص شريط التمرير */
         #launchersList::-webkit-scrollbar {
             width: 6px;
         }
@@ -202,4 +202,85 @@
 
         .back-btn:hover {
             background: rgba(59, 130, 246, 0.15);
-            border-color
+            border-color: rgba(59, 130, 246, 0.4);
+            color: #3b82f6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            #launchersList {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 12px;
+            }
+            .container {
+                padding: 25px 15px;
+                border-radius: 20px;
+            }
+            #launchersList {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Minecraft Launchers</h1>
+        
+        <!-- حقل البحث -->
+        <input type="text" id="searchInput" placeholder="Search launchers..." onkeyup="searchLaunchers()">
+        
+        <!-- قائمة اللانشرات -->
+        <div id="launchersList">
+            <!-- لانشر تجريبي بواجهة وهمية -->
+            <a href="https://www.lunarclient.com" target="_blank" class="launcher-card">
+                <img src="https://via.placeholder.com/65" alt="Example Launcher">
+                <div class="launcher-info">
+                    <h3>Example Launcher</h3>
+                    <p>Best FPS Booster Client</p>
+                </div>
+                <span class="download-btn"><i class="fa-solid fa-download"></i> Download</span>
+            </a>
+        </div>
+
+        <!-- زر العودة -->
+        <a href="index.html" class="back-btn" onclick="transitionPage(event, 'index.html')">
+            <i class="fa-solid fa-arrow-left"></i> Back to Home
+        </a>
+    </div>
+
+    <script>
+        function searchLaunchers() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.getElementsByClassName('launcher-card');
+
+            for (let i = 0; i < cards.length; i++) {
+                let title = cards[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+                if (title.includes(input)) {
+                    cards[i].style.display = "flex";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+
+        function transitionPage(event, url) {
+            event.preventDefault();
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                window.location.href = url;
+            }, 300);
+        }
+    </script>
+
+</body>
+</html>
