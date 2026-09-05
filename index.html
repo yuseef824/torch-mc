@@ -29,6 +29,14 @@
                 radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
                 #0b0c10;
             padding: 20px;
+            opacity: 0;
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
         }
 
         .container {
@@ -215,22 +223,21 @@
         
         <h1>TORCH MC</h1>
         
-     
         <p class="description">
             الموقع الرسمي والمنصة المتكاملة لكل ما يخص Minecraft. استكشف أقسام السيرفرات، المودات، والإعدادات بكل سهولة.
         </p>
         
-        
         <div class="nav-grid">
-            <a href="servrs.html" class="btn">
+            <a href="servrs.html" class="btn" onclick="transitionPage(event, 'servrs.html')">
                 <i class="fa-solid fa-server"></i> Servers
             </a>
             
-            <a href="launcher,html" class="btn">
+            <!-- تم تصحيح الرابط هنا إلى launcher.html وإضافة دالة الانتقال السلس -->
+            <a href="launcher.html" class="btn" onclick="transitionPage(event, 'launcher.html')">
                 <i class="fa-solid fa-cube"></i> Launchers
             </a>
 
-            <a href="config.html" class="btn">
+            <a href="config.html" class="btn" onclick="transitionPage(event, 'config.html')">
                 <i class="fa-solid fa-sliders"></i> Configs
             </a>
 
@@ -239,7 +246,7 @@
             </a>
 
             <!-- زر الديسكورد العريض -->
-            <a href="discord.html" class="btn discord-full-btn">
+            <a href="discord.html" class="btn discord-full-btn" onclick="transitionPage(event, 'discord.html')">
                 <i class="fa-brands fa-discord"></i> Discord Community
             </a>
         </div>
@@ -251,6 +258,17 @@
             </a>
         </div>
     </div>
+
+    <script>
+        // دالة انتقال ناعمة بين الصفحات بدون أي تقطيع أو تحميل مزعج
+        function transitionPage(event, url) {
+            event.preventDefault();
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                window.location.href = url;
+            }, 300);
+        }
+    </script>
 
 </body>
 </html>
