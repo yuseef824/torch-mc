@@ -37,9 +37,8 @@
             }
         }
 
-        /* هنا تم تكبير العرض (max-width: 750px) ليكون أكبر من الهوم بس بنفس الستايل */
         .container {
-            max-width: 750px;
+            max-width: 650px;
             width: 100%;
             background: rgba(18, 20, 31, 0.75);
             backdrop-filter: blur(16px);
@@ -54,16 +53,16 @@
 
         h1 {
             font-size: 32px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             text-align: center;
-            background: linear-gradient(135deg, #ffffff 30%, #9ca3af 100%);
+            background: linear-gradient(135deg, #22c55e 30%, #16a34a 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: 800;
             letter-spacing: 1px;
         }
 
-        /* حقل البحث بنفس ستايل حقول الموقع */
+        /* حقل البحث مطابق لصفحة المودات */
         #searchInput {
             width: 100%;
             padding: 14px 20px;
@@ -87,12 +86,12 @@
             color: #6b7280;
         }
 
-        /* قائمة اللانشرات (شبكة من عمودين أو حسب الرغبة) */
+        /* قائمة اللانشرات */
         #launchersList {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            display: flex;
+            flex-direction: column;
             gap: 15px;
-            max-height: 450px;
+            max-height: 420px;
             overflow-y: auto;
             padding-right: 5px;
             margin-bottom: 25px;
@@ -106,45 +105,45 @@
             border-radius: 10px;
         }
 
-        /* كارت اللانشر بنفس ستايل أزرار الهوم */
+        /* كارت اللانشر الأفقي */
         .launcher-card {
             background: rgba(26, 29, 45, 0.7);
-            padding: 20px;
+            padding: 16px 20px;
             border-radius: 14px;
             text-decoration: none;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             border: 1px solid rgba(255, 255, 255, 0.04);
             display: flex;
-            flex-direction: column;
             align-items: center;
-            text-align: center;
-            gap: 12px;
+            justify-content: space-between;
+            gap: 15px;
         }
 
         .launcher-card:hover {
-            background: rgba(34, 197, 94, 0.15);
+            background: rgba(34, 197, 94, 0.12);
             border-color: rgba(34, 197, 94, 0.4);
-            transform: translateY(-3px);
+            transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
 
+        .launcher-details {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
         .launcher-card img {
-            width: 65px;
-            height: 65px;
+            width: 55px;
+            height: 55px;
             border-radius: 12px;
             object-fit: cover;
             border: 2px solid rgba(34, 197, 94, 0.4);
             background: #12141f;
-            box-shadow: 0 0 15px rgba(34, 197, 94, 0.15);
-        }
-
-        .launcher-info {
-            width: 100%;
         }
 
         .launcher-info h3 {
             color: #ffffff;
-            margin: 0 0 4px 0;
+            margin: 0 0 3px 0;
             font-size: 16px;
             font-weight: 700;
         }
@@ -153,17 +152,114 @@
             color: #9ca3af;
             margin: 0;
             font-size: 12px;
-            line-height: 1.4;
         }
 
-        /* زر الداونلود داخل الكارت */
+        /* زر الداونلود الأخضر */
         .download-btn {
-            background: rgba(34, 197, 94, 0.15);
-            color: #22c55e;
-            padding: 10px;
+            background: #22c55e;
+            color: #0b0c10;
+            padding: 8px 20px;
             border-radius: 10px;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 13px;
             transition: all 0.3s ease;
-            border : 1px solid rgba(34, 197, 94, 0.4);
-        }                   
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+            white-space: nowrap;
+        }
+
+        .launcher-card:hover .download-btn {
+            background: #16a34a;
+            box-shadow: 0 6px 16px rgba(34, 197, 94, 0.5);
+        }
+
+        /* زر الرجوع للرئيسية بالأسفل */
+        .back-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            background: rgba(26, 29, 45, 0.9);
+            color: #ffffff;
+            padding: 14px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.4);
+            color: #3b82f6;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px 15px;
+            }
+            .launcher-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .download-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Launchers</h1>
+        
+        <input type="text" id="searchInput" placeholder="Search launchers..." onkeyup="searchLaunchers()">
+        
+        <div id="launchersList">
+            <a href="https://www.lunarclient.com" target="_blank" class="launcher-card">
+                <div class="launcher-details">
+                    <img src="logo.png" alt="Example Launcher">
+                    <div class="launcher-info">
+                        <h3>Example Launcher</h3>
+                        <p>Version: 1.16.5 - 2.26</p>
+                    </div>
+                </div>
+                <span class="download-btn">Download</span>
+            </a>
+        </div>
+
+        <a href="index.html" class="back-btn" onclick="transitionPage(event, 'index.html')">
+            Back to Home
+        </a>
+    </div>
+
+    <script>
+        function searchLaunchers() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.getElementsByClassName('launcher-card');
+
+            for (let i = 0; i < cards.length; i++) {
+                let title = cards[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+                if (title.includes(input)) {
+                    cards[i].style.display = "flex";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+
+        function transitionPage(event, url) {
+            event.preventDefault();
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                window.location.href = url;
+            }, 300);
+        }
+    </script>
+
+</body>
+</html>
