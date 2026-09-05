@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TORCH MC - Mods</title>
+    <title>TORCH MC - Launchers</title>
     <!-- أيقونة الموقع المصغرة -->
     <link rel="icon" type="image/png" href="logo.png">
     <!-- مكتبة الأيقونات -->
@@ -56,32 +56,34 @@
             letter-spacing: 1px;
         }
 
-        /* صندوق البحث بتصميم الهوم */
+        /* حقل البحث */
         #searchInput {
             width: 100%;
             padding: 14px 20px;
             margin-bottom: 30px;
-            background: rgba(26, 29, 45, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(26, 29, 45, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 14px;
             color: #fff;
             font-size: 15px;
             outline: none;
+            position: relative;
+            z-index: 10;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         #searchInput:focus {
-            background: rgba(34, 197, 94, 0.05);
-            border-color: rgba(34, 197, 94, 0.4);
-            box-shadow: 0 0 15px rgba(34, 197, 94, 0.15);
+            background: rgba(34, 197, 94, 0.08);
+            border-color: rgba(34, 197, 94, 0.5);
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
         }
 
         #searchInput::placeholder {
             color: #6b7280;
         }
 
-        /* شبكة المودات (3 أعمدة) */
-        #modsList {
+        /* شبكة اللانشرات (3 أعمدة) */
+        #launchersList {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 16px;
@@ -91,16 +93,16 @@
         }
 
         /* تخصيص شريط التمرير */
-        #modsList::-webkit-scrollbar {
+        #launchersList::-webkit-scrollbar {
             width: 6px;
         }
-        #modsList::-webkit-scrollbar-thumb {
+        #launchersList::-webkit-scrollbar-thumb {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
         }
 
-        /* كارت المود بتصميم بطاقات الهوم */
-        .mod-card {
+        /* كارت اللانشر */
+        .launcher-card {
             background: rgba(26, 29, 45, 0.7);
             padding: 20px;
             border-radius: 16px;
@@ -115,14 +117,14 @@
             position: relative;
         }
 
-        .mod-card:hover {
+        .launcher-card:hover {
             background: rgba(34, 197, 94, 0.1);
             border-color: rgba(34, 197, 94, 0.4);
             transform: translateY(-4px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
         }
 
-        .mod-card img {
+        .launcher-card img {
             width: 65px;
             height: 65px;
             border-radius: 12px;
@@ -132,18 +134,18 @@
             box-shadow: 0 0 15px rgba(34, 197, 94, 0.15);
         }
 
-        .mod-info {
+        .launcher-info {
             width: 100%;
         }
 
-        .mod-info h3 {
+        .launcher-info h3 {
             color: #ffffff;
             margin: 0 0 4px 0;
             font-size: 16px;
             font-weight: 700;
         }
 
-        .mod-info p {
+        .launcher-info p {
             color: #9ca3af;
             margin: 0;
             font-size: 12px;
@@ -166,13 +168,13 @@
             margin-top: 4px;
         }
 
-        .mod-card:hover .download-btn {
+        .launcher-card:hover .download-btn {
             background: #22c55e;
             color: #0b0c10;
             box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
         }
 
-        /* زر العودة بتصميم أزرار الهوم */
+        /* زر العودة */
         .back-btn {
             display: flex;
             align-items: center;
@@ -199,9 +201,9 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
 
-        /* التجاوب مع شاشات الهواتف */
+        /* التجاوب مع الهواتف والشاشات الصغيرة */
         @media (max-width: 768px) {
-            #modsList {
+            #launchersList {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
@@ -214,7 +216,7 @@
                 padding: 25px 15px;
                 border-radius: 20px;
             }
-            #modsList {
+            #launchersList {
                 grid-template-columns: 1fr;
             }
             h1 {
@@ -226,71 +228,62 @@
 <body>
 
     <div class="container">
-        <h1>Mods</h1>
+        <h1>Minecraft Launchers</h1>
         
         <!-- حقل البحث -->
-        <input type="text" id="searchInput" placeholder="Search mods..." onkeyup="searchMods()">
+        <input type="text" id="searchInput" placeholder="Search launchers..." onkeyup="searchLaunchers()">
         
-    
-        <div id="modsList">
-            <!-- Sodium -->
-            <a href="https://modrinth.com/mod/sodium/versions" target="_blank" class="mod-card">
-                <img src="img-mods/sodium.png" alt="Sodium">
-                <div class="mod-info">
-                    <h3>Sodium</h3>
-                    <p>1.14.2 - 2.26</p>
+        <!-- قائمة اللانشرات -->
+        <div id="launchersList">
+            <!-- Lunar Client -->
+            <a href="https://www.lunarclient.com/" target="_blank" class="launcher-card">
+                <img src="img-launchers/lunar.png" alt="Lunar Client">
+                <div class="launcher-info">
+                    <h3>Lunar Client</h3>
+                    <p>Optimized PVP Client</p>
                 </div>
                 <span class="download-btn"><i class="fa-solid fa-download"></i> Download</span>
             </a>
 
-            <!-- Fabric API -->
-            <a href="https://modrinth.com/mod/fabric-api/versions" target="_blank" class="mod-card">
-                <img src="img-mods/FabricAPI.png" alt="Fabric API">
-                <div class="mod-info">
-                    <h3>Fabric API</h3>
-                    <p>1.14 - 2.26</p>
+            <!-- Badlion Client -->
+            <a href="https://www.badlion.net/" target="_blank" class="launcher-card">
+                <img src="img-launchers/badlion.png" alt="Badlion Client">
+                <div class="launcher-info">
+                    <h3>Badlion Client</h3>
+                    <p>FPS Booster & Mods</p>
                 </div>
                 <span class="download-btn"><i class="fa-solid fa-download"></i> Download</span>
             </a>
 
-            <!-- Iris Shaders -->
-            <a href="https://modrinth.com/mod/iris/versions" target="_blank" class="mod-card">
-                <img src="img-mods/irs.png" alt="Iris Shaders">
-                <div class="mod-info">
-                    <h3>Iris Shaders</h3>
-                    <p>1.16.5 - 2.26</p>
-                </div>
-                <span class="download-btn"><i class="fa-solid fa-download"></i> Download</span>
-            </a>
-        
-            <!-- Cloth Config API -->
-            <a href="https://modrinth.com/mod/cloth-config/versions" target="_blank" class="mod-card">
-                <img src="img-mods/Cloth.png" alt="Cloth Config API">
-                <div class="mod-info">
-                    <h3>Cloth Config</h3>
-                    <p>1.14 - 2.26</p>
+            <!-- TLauncher -->
+            <a href="https://tlauncher.org/" target="_blank" class="launcher-card">
+                <img src="img-launchers/tlauncher.png" alt="TLauncher">
+                <div class="launcher-info">
+                    <h3>TLauncher</h3>
+                    <p>Popular Free Launcher</p>
                 </div>
                 <span class="download-btn"><i class="fa-solid fa-download"></i> Download</span>
             </a>
 
-            <!-- Mod Menu -->
-            <a href="https://modrinth.com/mod/modmenu/versions" target="_blank" class="mod-card">
-                <img src="img-mods/mn.png" alt="Mod Menu">
-                <div class="mod-info">
-                    <h3>Mod Menu</h3>
-                    <p>1.14.4 - 2.26</p>
+            <!-- Prism Launcher -->
+            <a href="https://prismlauncher.org/" target="_blank" class="launcher-card">
+                <img src="img-launchers/prism.png" alt="Prism Launcher">
+                <div class="launcher-info">
+                    <h3>Prism Launcher</h3>
+                    <p>Advanced Custom Launcher</p>
                 </div>
                 <span class="download-btn"><i class="fa-solid fa-download"></i> Download</span>
-            </a>  
-        
-            <a href="https://modrinth.com/mod/architectury-api/versions" target="_blank" class="mod-card">
-                <img src="img-mods/arc.png" alt="Mod Menu">
-                <div class="mod-info">
-                    <h3>Architectury API</h3>
-                    <p>1.16.5 - 2.26</p>
+            </a>
+
+            <!-- Feather Launcher -->
+            <a href="https://feathermc.com/" target="_blank" class="launcher-card">
+                <img src="img-launchers/feather.png" alt="Feather Launcher">
+                <div class="launcher-info">
+                    <h3>Feather Launcher</h3>
+                    <p>Lightweight Modded Client</p>
                 </div>
                 <span class="download-btn"><i class="fa-solid fa-download"></i> Download</span>
-            </a>  
+            </a>
         </div>
 
         <!-- زر العودة -->
@@ -300,10 +293,10 @@
     </div>
 
     <script>
-        // سكربت البحث
-        function searchMods() {
+        // سكربت البحث الخاص باللانشرات
+        function searchLaunchers() {
             let input = document.getElementById('searchInput').value.toLowerCase();
-            let cards = document.getElementsByClassName('mod-card');
+            let cards = document.getElementsByClassName('launcher-card');
 
             for (let i = 0; i < cards.length; i++) {
                 let title = cards[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
