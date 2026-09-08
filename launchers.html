@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TORCH MC - Featured Launchers</title>
+    <!-- أيقونة الموقع -->
+    <link rel="icon" type="image/png" href="logo.png">
+    <!-- مكتبة الأيقونات الفخمة FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #08090d;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(34, 197, 94, 0.1) 0%, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(59, 130, 246, 0.1) 0%, transparent 45%),
+                #08090d;
+            padding: 20px;
+            opacity: 0;
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* الحاوية الرئيسية الفخمة */
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background: rgba(15, 17, 26, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 35px 25px;
+            border-radius: 28px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* عنوان الواجهة */
+        .header-title {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .header-title h1 {
+            font-size: 30px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #22c55e 20%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .header-title p {
+            color: #9ca3af;
+            font-size: 13px;
+        }
+
+        /* صندوق البحث الفخم */
+        .search-box {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6b7280;
+            font-size: 16px;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 14px 20px 14px 48px;
+            background: rgba(22, 25, 37, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            color: #fff;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #searchInput:focus {
+            background: rgba(34, 197, 94, 0.06);
+            border-color: rgba(34, 197, 94, 0.5);
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.15);
+        }
+
+        #searchInput::placeholder {
+            color: #6b7280;
+        }
+
+        /* قائمة اللانشرات */
+        #launchersList {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-height: 440px;
+            overflow-y: auto;
+            padding-right: 4px;
+            margin-bottom: 25px;
+        }
+
+        #launchersList::-webkit-scrollbar {
+            width: 5px;
+        }
+        #launchersList::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        /* كارت اللانشر الترويجي */
+        .launcher-card {
+            background: rgba(22, 25, 37, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 18px;
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+        }
+
+        .launcher-card:hover {
+            background: rgba(34, 197, 94, 0.08);
+            border-color: rgba(34, 197, 94, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .launcher-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex: 1;
+        }
+
+        /* صورة اللانشر */
+        .launcher-img {
+            width: 65px;
+            height: 65px;
+            border-radius: 14px;
+            object-fit: cover;
+            border: 2px solid rgba(34, 197, 94, 0.3);
+            background: #0f111a;
+            flex-shrink: 0;
+        }
+
+        /* معلومات اللانشر والـ Updates */
+        .launcher-info h3 {
+            color: #ffffff;
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .launcher-desc {
+            color: #9ca3af;
+            font-size: 13px;
+            line-height: 1.4;
+            margin-bottom: 6px;
+        }
+
+        .update-badge {
+            display: inline-block;
+            background: rgba(34, 197, 94, 0.15);
+            color: #22c55e;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        /* زر الانتقال للموقع */
+        .visit-btn {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: #08090d;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 13px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .launcher-card:hover .visit-btn {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.5);
+        }
+
+        /* زر الرجوع للخلف / الهوم بالأسفل */
+        .back-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            background: rgba(22, 25, 37, 0.9);
+            color: #ffffff;
+            padding: 14px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.4);
+            color: #3b82f6;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* تجاوب مع الشاشات الصغيرة */
+        @media (max-width: 520px) {
+            .container {
+                padding: 20px 15px;
+            }
+            .launcher-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .visit-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- ترويسة الصفحة -->
+        <div class="header-title">
+            <h1>Featured Launchers</h1>
+            <p>Discover and download the best optimized launchers for ultimate performance</p>
+        </div>
+        
+        <!-- حقل البحث الفخم -->
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchInput" placeholder="Search launcher by name or update..." onkeyup="searchLaunchers()">
+        </div>
+        
+        <!-- قائمة اللانشرات الترويجية -->
+        <div id="launchersList">
+            
+            <!-- لانشر 1 -->
+            <div class="launcher-card">
+                <div class="launcher-content">
+                    <img src="logo.png" alt="Launcher Logo" class="launcher-img">
+                    <div class="launcher-info">
+                        <h3>TORCH Client Launcher</h3>
+                        <p class="launcher-desc">The official custom launcher designed for peak performance and mods support.</p>
+                        <span class="update-badge">Update v2.4.1 Released</span>
+                    </div>
+                </div>
+                <a href="https://example.com" target="_blank" class="visit-btn">
+                    <span>Visit Site</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+
+            <!-- لانشر 2 -->
+            <div class="launcher-card">
+                <div class="launcher-content">
+                    <img src="logo.png" alt="Launcher Logo" class="launcher-img">
+                    <div class="launcher-info">
+                        <h3>Lunar Client Pro</h3>
+                        <p class="launcher-desc">Enhanced PVP client with built-in mods, custom cosmetics, and high FPS boost.</p>
+                        <span class="update-badge">Update v1.19 - 1.21</span>
+                    </div>
+                </div>
+                <a href="https://www.lunarclient.com" target="_blank" class="visit-btn">
+                    <span>Visit Site</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+
+            <!-- لانشر 3 -->
+            <div class="launcher-card">
+                <div class="launcher-content">
+                    <img src="logo.png" alt="Launcher Logo" class="launcher-img">
+                    <div class="launcher-info">
+                        <h3>Badlion Client</h3>
+                        <p class="launcher-desc">All-in-one Minecraft client equipped with anti-cheat and comprehensive mod settings.</p>
+                        <span class="update-badge">Major Update v3.5</span>
+                    </div>
+                </div>
+                <a href="https://www.badlion.net" target="_blank" class="visit-btn">
+                    <span>Visit Site</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+
+        </div>
+
+        <!-- زر الرجوع للهوم -->
+        <a href="index.html" class="back-btn" onclick="transitionPage(event, 'index.html')">
+            <i class="fa-solid fa-house"></i>
+            <span>Back to Home</span>
+        </a>
+    </div>
+
+    <script>
+        // وظيفة البحث الذكي (تبحث بالاسم أو الوصف أو التحديثات)
+        function searchLaunchers() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.getElementsByClassName('launcher-card');
+
+            for (let i = 0; i < cards.length; i++) {
+                let text = cards[i].innerText.toLowerCase();
+                if (text.includes(input)) {
+                    cards[i].style.display = "flex";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+
+        // تأثير انتقال ناعم للصفحة الرئيسية
+        function transitionPage(event, url) {
+            event.preventDefault();
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                window.location.href = url;
+            }, 300);
+        }
+    </script>
+
+</body>
+</html>
