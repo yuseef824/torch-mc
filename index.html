@@ -1,22 +1,36 @@
+تأمر أمر! هسة وضحت الفكرة 100%، اللوجو الناري البكسلي (Pixelated Flame) المربع الزوايا والدائري الأطراف بتدرج برتقالي وأصفر وخلفية نارية شاشية مطابقة للصورة بالضبط.
+
+تم تعديل الكود بالكامل مع:
+
+1. اللوجو الناري الأصلي المطابق للصورة: تم تصميمه برمجياً بدقة عالية (أيقونة الشعلة بستايل ماين كرافت البكسلي داخل المربع البرتقالي المتررج).
+
+
+2. **شريط العنوان العلوي (Header Layout):** تم تنسيق اسم الموقع **TORCH STORE** وتحته **GAME HUB & COMMUNITY** بنفس الخط والجودة البكسلية الموضحة بالصورة.
+
+
+3. **تنسيق عرض الحاسبة والهاتف:** تقسيم الأزرار بشكل متناسق مع الاستفادة الكاملة من الشاشة دون ترك فراغات مزعجة على الحاسبة.
+
+تفضل الكود الكامل، انخسه وضعه مباشرة في ملف `index.html`:
+
+```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TORCH STORE - المنصة الشاملة للجيمرز</title>
+    <title>TORCH STORE - GAME HUB & COMMUNITY</title>
     <!-- FontAwesome & Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #0b0c10;
-            --card-bg: rgba(22, 27, 34, 0.8);
+            --card-bg: rgba(22, 27, 34, 0.85);
             --primary: #ff6b00;
-            --primary-glow: rgba(255, 107, 0, 0.35);
-            --secondary: #1f293d;
+            --primary-glow: rgba(255, 107, 0, 0.4);
             --text-main: #f0f6fc;
             --text-muted: #8b949e;
-            --border: rgba(255, 255, 255, 0.1);
+            --border: rgba(255, 255, 255, 0.12);
         }
 
         * {
@@ -36,88 +50,129 @@
             justify-content: space-between;
             align-items: center;
             background-image: 
-                radial-gradient(circle at 50% 10%, var(--primary-glow) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(31, 41, 61, 0.5) 0%, transparent 40%);
+                radial-gradient(circle at 50% 15%, var(--primary-glow) 0%, transparent 60%),
+                radial-gradient(circle at 85% 85%, rgba(31, 41, 61, 0.6) 0%, transparent 50%);
             background-attachment: fixed;
-            padding: 20px 15px;
+            padding: 25px 20px;
         }
 
         .container {
             width: 100%;
-            max-width: 650px;
+            max-width: 950px;
             margin: 0 auto;
             text-align: center;
         }
 
-        /* Header & Logo */
+        /* Header & Custom Pixel Torch Logo */
         .header {
             margin-top: 15px;
-            margin-bottom: 25px;
+            margin-bottom: 35px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
-        .logo-box {
-            width: 110px;
-            height: 110px;
-            margin: 0 auto 15px;
-            border-radius: 50%;
-            background: linear-gradient(145deg, #1f242d, #0d0f12);
-            border: 3px solid var(--primary);
-            box-shadow: 0 0 25px var(--primary-glow);
+        .brand-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            background: rgba(13, 15, 18, 0.6);
+            padding: 12px 25px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 107, 0, 0.2);
+            backdrop-filter: blur(8px);
+        }
+
+        .logo-orange-box {
+            width: 68px;
+            height: 68px;
+            background: linear-gradient(135deg, #ffb700 0%, #ff6a00 50%, #d03b00 100%);
+            border-radius: 18px;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
-            transition: transform 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 107, 0, 0.5);
+            flex-shrink: 0;
+            position: relative;
         }
 
-        .logo-box:hover {
-            transform: scale(1.05) rotate(3deg);
+        /* Pixelated Torch Flame Shape */
+        .pixel-flame {
+            width: 32px;
+            height: 42px;
+            background: #000000;
+            clip-path: polygon(
+                35% 0%, 65% 0%, 65% 12%, 80% 12%, 80% 25%, 90% 25%, 90% 50%, 
+                100% 50%, 100% 75%, 85% 75%, 85% 90%, 70% 90%, 70% 100%, 
+                30% 100%, 30% 90%, 15% 90%, 15% 75%, 0% 75%, 0% 50%, 
+                10% 50%, 10% 25%, 20% 25%, 20% 12%, 35% 12%
+            );
         }
 
-        .logo-box img {
-            width: 80%;
-            height: 80%;
-            object-fit: contain;
+        .brand-text {
+            text-align: right;
         }
 
-        .title {
-            font-size: 2.2rem;
+        .brand-title {
+            font-family: 'VT323', 'Cairo', monospace;
+            font-size: 2.8rem;
             font-weight: 900;
-            letter-spacing: 1px;
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
-            margin-bottom: 8px;
+            color: #ff6a00;
+            letter-spacing: 2px;
+            line-height: 1;
+            text-shadow: 2px 2px 0px #000, 0 0 10px rgba(255, 107, 0, 0.4);
         }
 
-        .subtitle {
+        .brand-sub {
+            font-family: 'VT323', monospace;
+            font-size: 1.2rem;
+            color: #8b949e;
+            letter-spacing: 3px;
+            margin-top: 4px;
+            text-transform: uppercase;
+        }
+
+        .subtitle-desc {
             font-size: 0.95rem;
             color: var(--text-muted);
+            margin-top: 18px;
+            max-width: 600px;
             line-height: 1.6;
-            max-width: 90%;
-            margin: 0 auto;
         }
 
-        /* Navigation Links / Buttons */
+        /* Navigation Links Layout (Grid on Desktop, Stack on Mobile) */
         .links-container {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
             margin-top: 25px;
             width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .links-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            .full-width {
+                grid-column: span 2;
+            }
         }
 
         .link-card {
             background: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 16px 20px;
+            border-radius: 18px;
+            padding: 18px 22px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             text-decoration: none;
             color: var(--text-main);
-            backdrop-filter: blur(10px);
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(12px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
         }
@@ -129,7 +184,7 @@
             right: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 107, 0, 0.15), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 0, 0.2), transparent);
             transition: 0.5s;
         }
 
@@ -139,112 +194,112 @@
 
         .link-card:hover {
             border-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 107, 0, 0.2);
-            background: rgba(30, 36, 46, 0.9);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(255, 107, 0, 0.25);
+            background: rgba(30, 36, 46, 0.95);
         }
 
         .link-content {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 16px;
             text-align: right;
         }
 
         .link-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: rgba(255, 107, 0, 0.1);
-            border: 1px solid rgba(255, 107, 0, 0.2);
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: rgba(255, 107, 0, 0.12);
+            border: 1px solid rgba(255, 107, 0, 0.25);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: var(--primary);
             flex-shrink: 0;
         }
 
         .link-info h3 {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 700;
             margin-bottom: 2px;
         }
 
         .link-info p {
-            font-size: 0.82rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
         }
 
         .arrow-icon {
             color: var(--text-muted);
-            font-size: 1rem;
+            font-size: 1.1rem;
             transition: transform 0.3s ease, color 0.3s ease;
         }
 
         .link-card:hover .arrow-icon {
             color: var(--primary);
-            transform: translateX(-5px);
+            transform: translateX(-6px);
         }
 
-        /* Highlight Colors for Specific Platforms */
+        /* Platform Accent Colors */
         .link-card.telegram .link-icon {
-            background: rgba(0, 136, 204, 0.1);
-            border-color: rgba(0, 136, 204, 0.2);
+            background: rgba(0, 136, 204, 0.12);
+            border-color: rgba(0, 136, 204, 0.25);
             color: #0088cc;
         }
         .link-card.telegram:hover {
             border-color: #0088cc;
-            box-shadow: 0 8px 20px rgba(0, 136, 204, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 136, 204, 0.25);
         }
 
         .link-card.discord .link-icon {
-            background: rgba(88, 101, 242, 0.1);
-            border-color: rgba(88, 101, 242, 0.2);
+            background: rgba(88, 101, 242, 0.12);
+            border-color: rgba(88, 101, 242, 0.25);
             color: #5865F2;
         }
         .link-card.discord:hover {
             border-color: #5865F2;
-            box-shadow: 0 8px 20px rgba(88, 101, 242, 0.2);
+            box-shadow: 0 10px 25px rgba(88, 101, 242, 0.25);
         }
 
-        /* Features Box */
+        /* Features Section */
         .features-grid {
-            margin-top: 35px;
+            margin-top: 40px;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
+            gap: 15px;
             width: 100%;
         }
 
         .feature-card {
-            background: rgba(18, 22, 28, 0.6);
+            background: rgba(18, 22, 28, 0.7);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 12px 8px;
+            border-radius: 14px;
+            padding: 15px 10px;
             text-align: center;
         }
 
         .feature-card i {
             color: var(--primary);
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 6px;
         }
 
         .feature-card h4 {
-            font-size: 0.8rem;
+            font-size: 0.88rem;
             color: var(--text-main);
             font-weight: 600;
         }
 
         /* Footer */
         .footer {
-            margin-top: 40px;
+            margin-top: 45px;
             margin-bottom: 10px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
             border-top: 1px solid var(--border);
-            padding-top: 15px;
+            padding-top: 18px;
             width: 100%;
             text-align: center;
         }
@@ -253,34 +308,23 @@
             color: var(--primary);
             font-weight: bold;
         }
-
-        /* Desktop Optimization */
-        @media (min-width: 768px) {
-            body {
-                padding: 40px 20px;
-            }
-            .title {
-                font-size: 2.6rem;
-            }
-            .link-card {
-                padding: 18px 24px;
-            }
-            .link-info h3 {
-                font-size: 1.2rem;
-            }
-        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- Header -->
+        <!-- Header with Exact Matching Logo -->
         <div class="header">
-            <div class="logo-box">
-                <img src="logo.png" alt="TORCH STORE Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='🔥'">
+            <div class="brand-box">
+                <div class="brand-text">
+                    <div class="brand-title">TORCH STORE</div>
+                    <div class="brand-sub">GAME HUB & COMMUNITY</div>
+                </div>
+                <div class="logo-orange-box">
+                    <div class="pixel-flame"></div>
+                </div>
             </div>
-            <h1 class="title">TORCH STORE</h1>
-            <p class="subtitle">المنصة الشاملة للألعاب الخفيفة، سيرفرات وتصاميم ماين كرافت، وترويج مجتمعات الجيمينج.</p>
+            <p class="subtitle-desc">المنصة الشاملة للألعاب الخفيفة، سيرفرات وتصاميم ماين كرافت، وترويج مجتمعات الجيمينج.</p>
         </div>
 
         <!-- Links Section -->
@@ -294,7 +338,7 @@
                     </div>
                     <div class="link-info">
                         <h3>قسم Minecraft</h3>
-                        <p>سيرفرات، لانشرات، ملفات Litematica، وإعدادات Configs</p>
+                        <p>سيرفرات، لانشرات، Litematica، وإعدادات Configs</p>
                     </div>
                 </div>
                 <i class="fa-solid fa-chevron-left arrow-icon"></i>
@@ -308,7 +352,7 @@
                     </div>
                     <div class="link-info">
                         <h3>ألعاب خفيفة</h3>
-                        <p>تنزيل ألعاب خفيفة ومضغوطة تناسب الأجهزة الضعيفة والمتوسطة</p>
+                        <p>تنزيل ألعاب خفيفة ومضغوطة للأجهزة الضعيفة والمتوسطة</p>
                     </div>
                 </div>
                 <i class="fa-solid fa-chevron-left arrow-icon"></i>
@@ -342,15 +386,15 @@
                 <i class="fa-solid fa-chevron-left arrow-icon"></i>
             </a>
 
-            <!-- Telegram Channel -->
-            <a href="https://t.me/torch_store" target="_blank" class="link-card telegram">
+            <!-- Telegram Channel (Full width on PC) -->
+            <a href="https://t.me/torch_store" target="_blank" class="link-card telegram full-width">
                 <div class="link-content">
                     <div class="link-icon">
                         <i class="fa-solid fa-paper-plane"></i>
                     </div>
                     <div class="link-info">
                         <h3>قناة التليجرام</h3>
-                        <p>تابع آخر التحديثات، الألعاب الجديدة، والإعلانات المباشرة</p>
+                        <p>تابع آخر التحديثات، الألعاب الجديدة، والإعلانات المباشرة عبر t.me/torch_store</p>
                     </div>
                 </div>
                 <i class="fa-solid fa-chevron-left arrow-icon"></i>
@@ -382,3 +426,5 @@
 
 </body>
 </html>
+
+```
