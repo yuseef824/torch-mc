@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TORCH STORE - قسم الألعاب الخفيفة</title>
+    <!-- FontAwesome & Cairo Font -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=VT323&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0c10;
+            --card-bg: rgba(22, 27, 34, 0.9);
+            --primary: #ff6b00;
+            --primary-glow: rgba(255, 107, 0, 0.35);
+            --text-main: #f0f6fc;
+            --text-muted: #8b949e;
+            --border: rgba(255, 255, 255, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image: 
+                radial-gradient(circle at 50% 10%, var(--primary-glow) 0%, transparent 60%),
+                radial-gradient(circle at 85% 85%, rgba(31, 41, 61, 0.5) 0%, transparent 50%);
+            background-attachment: fixed;
+            padding: 20px 15px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Top Navigation Header */
+        .top-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-main);
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 16px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+        }
+
+        .page-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .page-title h1 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        /* Categories Bar (Tabs) */
+        .categories-nav {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            width: 100%;
+            scrollbar-width: none;
+        }
+
+        .categories-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .cat-tab {
+            background: rgba(22, 27, 34, 0.7);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 10px 22px;
+            border-radius: 14px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cat-tab.active, .cat-tab:hover {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(255, 107, 0, 0.4);
+        }
+
+        /* Telegram-Style Game Cards Feed */
+        .games-feed {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            width: 100%;
+        }
+
+        .game-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .game-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Large & Wide Image Header */
+        .game-image-box {
+            width: 100%;
+            height: 280px;
+            position: relative;
+            overflow: hidden;
+            background: #151821;
+        }
+
+        .game-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .game-card:hover .game-image-box img {
+            transform: scale(1.04);
+        }
+
+        .game-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(11, 12, 16, 0.85);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Game Card Body */
+        .game-details {
+            padding: 20px 22px;
+            text-align: right;
+        }
+
+        .game-name {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .game-size {
+            font-size: 0.85rem;
+            color: var(--primary);
+            background: rgba(255, 107, 0, 0.1);
+            padding: 4px 10px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 107, 0, 0.2);
+        }
+
+        .game-description {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        /* Big Download Button */
+        .download-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #ff6b00, #e05300);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 800;
+            border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(255, 107, 0, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: linear-gradient(135deg, #ff7b1a, #ff6b00);
+            box-shadow: 0 8px 25px rgba(255, 107, 0, 0.55);
+            transform: translateY(-2px);
+        }
+
+        /* Desktop Optimization */
+        @media (min-width: 768px) {
+            .game-image-box {
+                height: 350px;
+            }
+            .game-name {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Top Navigation Bar -->
+        <div class="top-nav">
+            <a href="index.html" class="back-btn">
+                <i class="fa-solid fa-arrow-right"></i> الرئيسية
+            </a>
+            <div class="page-title">
+                <h1>قسم الألعاب الخفيفة</h1>
+                <i class="fa-solid fa-gamepad" style="color: var(--primary); font-size: 1.5rem;"></i>
+            </div>
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="categories-nav">
+            <button class="cat-tab active" onclick="filterCategory('all')">
+                <i class="fa-solid fa-border-all"></i> الكل
+            </button>
+            <button class="cat-tab" onclick="filterCategory('gta')">
+                <i class="fa-solid fa-car"></i> قسم GTA
+            </button>
+            <button class="cat-tab" onclick="filterCategory('assassin')">
+                <i class="fa-solid fa-mask"></i> Assassin's Creed
+            </button>
+            <button class="cat-tab" onclick="filterCategory('other')">
+                <i class="fa-solid fa-bolt"></i> ألعاب أخرى
+            </button>
+        </div>
+
+        <!-- Games List Feed -->
+        <div class="games-feed">
+
+            <!-- Game Card 1: GTA San Andreas -->
+            <div class="game-card" data-category="gta">
+                <div class="game-image-box">
+                    <img src="https://images.alphacoders.com/270/270183.jpg" alt="GTA San Andreas">
+                    <span class="game-badge">قسم GTA</span>
+                </div>
+                <div class="game-details">
+                    <div class="game-name">
+                        <span>Grand Theft Auto: San Andreas</span>
+                        <span class="game-size"><i class="fa-solid fa-hard-drive"></i> 3.5 GB</span>
+                    </div>
+                    <p class="game-description">
+                        النسخة الخفيفة والمعدلة للعمل بسلاسة على كافة الأجهزة واللابتوبات الضعيفة، تحتوي على جرافيك متناسق وأداء ممتاز بدون تقطيع أو هبوط فريمات.
+                    </p>
+                    <a href="https://t.me/torch_store" target="_blank" class="download-btn">
+                        <i class="fa-solid fa-download"></i> تحميل اللعبة الآن (رابط مباشر)
+                    </a>
+                </div>
+            </div>
+
+            <!-- Game Card 2: Assassin's Creed 1 -->
+            <div class="game-card" data-category="assassin">
+                <div class="game-image-box">
+                    <img src="https://images.alphacoders.com/152/152702.jpg" alt="Assassin's Creed 1">
+                    <span class="game-badge">Assassin's Creed</span>
+                </div>
+                <div class="game-details">
+                    <div class="game-name">
+                        <span>Assassin's Creed I</span>
+                        <span class="game-size"><i class="fa-solid fa-hard-drive"></i> 6.2 GB</span>
+                    </div>
+                    <p class="game-description">
+                        الجزء الأول الخفيف الأسطوري، مضغوط بأسلوب عالي الجودة ليشتغل على كافة المعالجات المدمجة والكروت القديمة بأعلى أداء ومعدل فريمات ثابت.
+                    </p>
+                    <a href="https://t.me/torch_store" target="_blank" class="download-btn">
+                        <i class="fa-solid fa-download"></i> تحميل اللعبة الآن (رابط مباشر)
+                    </a>
+                </div>
+            </div>
+
+            <!-- Game Card 3: GTA Vice City -->
+            <div class="game-card" data-category="gta">
+                <div class="game-image-box">
+                    <img src="https://images3.alphacoders.com/270/270830.jpg" alt="GTA Vice City">
+                    <span class="game-badge">قسم GTA</span>
+                </div>
+                <div class="game-details">
+                    <div class="game-name">
+                        <span>Grand Theft Auto: Vice City</span>
+                        <span class="game-size"><i class="fa-solid fa-hard-drive"></i> 1.2 GB</span>
+                    </div>
+                    <p class="game-description">
+                        نسخة خفيفة جداً بحجم صغير، جاهزة للتحميل والتشغيل المباشر بدون الحاجة لتثبيت معقد، متوافقة مع جميع أنظمة ويندوز.
+                    </p>
+                    <a href="https://t.me/torch_store" target="_blank" class="download-btn">
+                        <i class="fa-solid fa-download"></i> تحميل اللعبة الآن (رابط مباشر)
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Category Filter Script -->
+    <script>
+        function filterCategory(category) {
+            // Update Active Tab
+            const tabs = document.querySelectorAll('.cat-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            // Filter Game Cards
+            const cards = document.querySelectorAll('.game-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
