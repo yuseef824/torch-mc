@@ -1,214 +1,272 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TORCH MC - Home</title>
-    
-    <link rel="icon" type="image/png" href="logo.png">
-    
+    <title>TORCH STORE - المنصة الشاملة للجيمرز</title>
+    <!-- FontAwesome & Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-color: #0b0c10;
+            --card-bg: rgba(22, 27, 34, 0.8);
+            --primary: #ff6b00;
+            --primary-glow: rgba(255, 107, 0, 0.35);
+            --secondary: #1f293d;
+            --text-main: #f0f6fc;
+            --text-muted: #8b949e;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background-color: #0b0c10;
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(34, 197, 94, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
-                #0b0c10;
-            padding: 20px;
-            opacity: 0;
-            animation: fadeIn 0.4s ease-in-out forwards;
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
+                radial-gradient(circle at 50% 10%, var(--primary-glow) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(31, 41, 61, 0.5) 0%, transparent 40%);
+            background-attachment: fixed;
+            padding: 20px 15px;
         }
 
         .container {
-            max-width: 500px;
             width: 100%;
-            background: rgba(18, 20, 31, 0.75);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 40px 30px;
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+            max-width: 650px;
+            margin: 0 auto;
             text-align: center;
+        }
+
+        /* Header & Logo */
+        .header {
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .logo-box {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #1f242d, #0d0f12);
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 25px var(--primary-glow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-box:hover {
+            transform: scale(1.05) rotate(3deg);
+        }
+
+        .logo-box img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+
+        .title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        /* Navigation Links / Buttons */
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-top: 25px;
+            width: 100%;
+        }
+
+        .link-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
+            color: var(--text-main);
+            backdrop-filter: blur(10px);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
         }
 
-        .logo-wrapper {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 20px;
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 0, 0.15), transparent);
+            transition: 0.5s;
         }
 
-        .server-logo {
-            width: 95px;
-            height: 95px;
-            border-radius: 50%;
-            border: 3px solid rgba(34, 197, 94, 0.6);
-            object-fit: cover;
-            box-shadow: 0 0 25px rgba(34, 197, 94, 0.25);
-            background: #12141f;
+        .link-card:hover::before {
+            right: 100%;
         }
 
-        h1 {
-            font-size: 32px;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, #ffffff 30%, #9ca3af 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 800;
-            letter-spacing: 1px;
+        .link-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 0, 0.2);
+            background: rgba(30, 36, 46, 0.9);
         }
 
-        .description {
-            color: #9ca3af;
-            font-size: 14px;
-            line-height: 1.7;
-            margin-bottom: 30px;
-            padding: 0 10px;
+        .link-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-align: right;
         }
 
-        /* تخطيط الأزرار الشبكي الحديث */
-        .nav-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-bottom: 15px;
-        }
-
-        .btn {
-            background: rgba(26, 29, 45, 0.7);
-            color: #ffffff;
-            padding: 14px 20px;
-            text-decoration: none;
-            border-radius: 14px;
-            font-weight: 600;
-            font-size: 14px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255, 255, 255, 0.04);
+        .link-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(255, 107, 0, 0.1);
+            border: 1px solid rgba(255, 107, 0, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            font-size: 1.4rem;
+            color: var(--primary);
+            flex-shrink: 0;
         }
 
-        .btn i {
-            font-size: 16px;
-            color: #3b82f6;
-            transition: transform 0.3s;
+        .link-info h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 2px;
         }
 
-        .btn:hover {
-            background: rgba(34, 197, 94, 0.15);
-            border-color: rgba(34, 197, 94, 0.4);
-            color: #22c55e;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        .link-info p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
         }
 
-        .btn:hover i {
-            transform: scale(1.15);
-            color: #22c55e;
+        .arrow-icon {
+            color: var(--text-muted);
+            font-size: 1rem;
+            transition: transform 0.3s ease, color 0.3s ease;
         }
 
-        /* زر الديسكورد المميز بعرض كامل */
-        .discord-full-btn {
-            grid-column: span 2;
-            background: rgba(88, 101, 242, 0.15);
-            border-color: rgba(88, 101, 242, 0.3);
-            color: #7289da;
+        .link-card:hover .arrow-icon {
+            color: var(--primary);
+            transform: translateX(-5px);
         }
 
-        .discord-full-btn i {
+        /* Highlight Colors for Specific Platforms */
+        .link-card.telegram .link-icon {
+            background: rgba(0, 136, 204, 0.1);
+            border-color: rgba(0, 136, 204, 0.2);
+            color: #0088cc;
+        }
+        .link-card.telegram:hover {
+            border-color: #0088cc;
+            box-shadow: 0 8px 20px rgba(0, 136, 204, 0.2);
+        }
+
+        .link-card.discord .link-icon {
+            background: rgba(88, 101, 242, 0.1);
+            border-color: rgba(88, 101, 242, 0.2);
             color: #5865F2;
         }
-
-        .discord-full-btn:hover {
-            background: #5865F2;
+        .link-card.discord:hover {
             border-color: #5865F2;
-            color: #ffffff;
-            box-shadow: 0 8px 20px rgba(88, 101, 242, 0.4);
+            box-shadow: 0 8px 20px rgba(88, 101, 242, 0.2);
         }
 
-        .discord-full-btn:hover i {
-            color: #ffffff;
-        }
-
-        /* قسم التيليجرام */
-        .telegram-section {
-            margin-top: 15px;
-        }
-
-        .telegram-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+        /* Features Box */
+        .features-grid {
+            margin-top: 35px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
             width: 100%;
-            background: linear-gradient(135deg, #22c55e, #16a34a);
-            color: #ffffff;
-            padding: 14px;
-            border-radius: 14px;
-            text-decoration: none;
+        }
+
+        .feature-card {
+            background: rgba(18, 22, 28, 0.6);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px 8px;
+            text-align: center;
+        }
+
+        .feature-card i {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+        }
+
+        .feature-card h4 {
+            font-size: 0.8rem;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            padding-top: 15px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .footer span {
+            color: var(--primary);
             font-weight: bold;
-            font-size: 15px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .telegram-btn:hover {
-            opacity: 0.95;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.5);
-        }
-
-        /* التجاوب مع شاشات الهواتف */
-        @media (max-width: 480px) {
+        /* Desktop Optimization */
+        @media (min-width: 768px) {
             body {
-                padding: 12px;
+                padding: 40px 20px;
             }
-
-            .container {
-                padding: 30px 20px;
-                border-radius: 20px;
+            .title {
+                font-size: 2.6rem;
             }
-
-            h1 {
-                font-size: 26px;
+            .link-card {
+                padding: 18px 24px;
             }
-
-            .description {
-                font-size: 13px;
-                margin-bottom: 25px;
-            }
-
-            .nav-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .discord-full-btn {
-                grid-column: span 1;
+            .link-info h3 {
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -216,59 +274,111 @@
 <body>
 
     <div class="container">
-        
-        <div class="logo-wrapper">
-            <img src="logo.png" alt="Torch MC Logo" class="server-logo">
-        </div>
-        
-        <h1>TORCH MC</h1>
-        
-        <p class="description">
-            الموقع الرسمي والمنصة المتكاملة لكل ما يخص Minecraft. استكشف أقسام السيرفرات، المودات، والإعدادات بكل سهولة.
-        </p>
-        
-        <div class="nav-grid">
-            <a href="servrs.html" class="btn" onclick="transitionPage(event, 'servrs.html')">
-                <i class="fa-solid fa-server"></i> Servers
-            </a>
-            
-            
-            <a href="launchers.html" class="btn" onclick="transitionPage(event, 'launcher.html')">
-                <i class="fa-solid fa-cube"></i> Launchers
-            </a>
-
-            <a href="config.html" class="btn" onclick="transitionPage(event, 'config.html')">
-                <i class="fa-solid fa-sliders"></i> Configs
-            </a>
-
-            <a href="pro.html" target="_blank" class="btn">
-                <i class="fa-solid fa-code"></i> المطورين
-            </a>
-
-            
-            <a href="discord.html" class="btn discord-full-btn" onclick="transitionPage(event, 'discord.html')">
-                <i class="fa-brands fa-discord"></i> Discord Community
-            </a>
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-box">
+                <img src="logo.png" alt="TORCH STORE Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='🔥'">
+            </div>
+            <h1 class="title">TORCH STORE</h1>
+            <p class="subtitle">المنصة الشاملة للألعاب الخفيفة، سيرفرات وتصاميم ماين كرافت، وترويج مجتمعات الجيمينج.</p>
         </div>
 
-        
-        <div class="telegram-section">
-            <a href="https://t.me/torch_store" target="_blank" class="telegram-btn">
-                <i class="fa-brands fa-telegram"></i> Join Telegram
+        <!-- Links Section -->
+        <div class="links-container">
+            
+            <!-- Minecraft Section -->
+            <a href="servrs.html" class="link-card">
+                <div class="link-content">
+                    <div class="link-icon">
+                        <i class="fa-solid fa-cube"></i>
+                    </div>
+                    <div class="link-info">
+                        <h3>قسم Minecraft</h3>
+                        <p>سيرفرات، لانشرات، ملفات Litematica، وإعدادات Configs</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-left arrow-icon"></i>
             </a>
+
+            <!-- Light Games Section -->
+            <a href="games.html" class="link-card">
+                <div class="link-content">
+                    <div class="link-icon">
+                        <i class="fa-solid fa-gamepad"></i>
+                    </div>
+                    <div class="link-info">
+                        <h3>ألعاب خفيفة</h3>
+                        <p>تنزيل ألعاب خفيفة ومضغوطة تناسب الأجهزة الضعيفة والمتوسطة</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-left arrow-icon"></i>
+            </a>
+
+            <!-- Server Promotion Section -->
+            <a href="https://t.me/torch_store" target="_blank" class="link-card">
+                <div class="link-content">
+                    <div class="link-icon">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </div>
+                    <div class="link-info">
+                        <h3>ترويج السيرفرات</h3>
+                        <p>انشر سيرفرك الخاص واكسب أعضاء جدد عبر مجتمعنا</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-left arrow-icon"></i>
+            </a>
+
+            <!-- Discord Community -->
+            <a href="discord.html" class="link-card discord">
+                <div class="link-content">
+                    <div class="link-icon">
+                        <i class="fa-brands fa-discord"></i>
+                    </div>
+                    <div class="link-info">
+                        <h3>سيرفر الديسكورد</h3>
+                        <p>انضم لمجتمع الجيمرز، الدعم الفني، والتواصل المباشر</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-left arrow-icon"></i>
+            </a>
+
+            <!-- Telegram Channel -->
+            <a href="https://t.me/torch_store" target="_blank" class="link-card telegram">
+                <div class="link-content">
+                    <div class="link-icon">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </div>
+                    <div class="link-info">
+                        <h3>قناة التليجرام</h3>
+                        <p>تابع آخر التحديثات، الألعاب الجديدة، والإعلانات المباشرة</p>
+                    </div>
+                </div>
+                <i class="fa-solid fa-chevron-left arrow-icon"></i>
+            </a>
+
+        </div>
+
+        <!-- Features Bar -->
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fa-solid fa-bolt"></i>
+                <h4>روابط مباشرة</h4>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h4>محتوى آمن 100%</h4>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-users"></i>
+                <h4>مجتمع متفاعل</h4>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            جميع الحقوق محفوظة &copy; 2026 | <span>TORCH STORE</span>
         </div>
     </div>
-
-    <script>
-        
-        function transitionPage(event, url) {
-            event.preventDefault();
-            document.body.style.opacity = '0';
-            setTimeout(() => {
-                window.location.href = url;
-            }, 300);
-        }
-    </script>
 
 </body>
 </html>
